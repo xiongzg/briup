@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>组件注册</title>
+  <script src='../js/vue.js'></script>
+</head>
+<body>
+  <div id="app">
+    <my-section :a='msg'></my-section>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        msg:'hello Vue'
+      },
+      components:{
+        'my-section':{
+          props:['a'],//期待接受父组件传递的数据
+          template:'<div>\
+            <h2>{{title}}</h2>\
+            <p>{{content}}</p>\
+            <p>msg:{{a}}</p>\
+          </div>',
+          data:function(){
+            return {
+              title:'这是我的第一个组件',
+              content:'在Vue中，一切都是组件...'
+            }
+          }
+        }
+      }
+    });
+
+  </script>
+</body>
+</html>
